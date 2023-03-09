@@ -12,7 +12,7 @@ class Users
 public:
 	static void set_pers_info();
 	static void get_pers_info();
-
+	/*
 	static class Fullname
 	{
 	public:
@@ -28,6 +28,6 @@ public:
 		int month;
 		int year;
 	};
-	int age;
+	int age;*/
 };
 
