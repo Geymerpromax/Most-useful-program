@@ -7,6 +7,7 @@ using namespace std;
 // Сравнение данных c клавиатуры и данных из текстового файла:
 int point_of_entry::compare_data_for_login(string file_name, string input_data)
 {
+	setlocale(LC_ALL, "Russian");
 	fstream file;
 	file.open(file_name, fstream::in | fstream::out | fstream::app);
 	if (!(file.is_open()))
