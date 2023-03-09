@@ -7,6 +7,7 @@
 using namespace std;
 int main()
 {
+	setlocale(LC_ALL, "Russian");
 	//system("chcp 1251");
 	//system("cls");
 	point_of_entry::entry_check();
