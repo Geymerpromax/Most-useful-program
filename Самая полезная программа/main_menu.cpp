@@ -2,15 +2,15 @@
 #include "point_of_entry.h"
 #include "Users.h"
 using namespace std;
-// Главное меню
+// ГѓГ«Г ГўГ­Г®ГҐ Г¬ГҐГ­Гѕ
 int main_menu::Main()
 {
-	cout << "Главное меню"			    << endl
-		 << "1. Профиль"				<< endl
-		 << "2. Выйти из аккаунта"		<< endl
+	cout << "ГѓГ«Г ГўГ­Г®ГҐ Г¬ГҐГ­Гѕ"			    << endl
+		 << "1. ГЏГ°Г®ГґГЁГ«Гј"				<< endl
+		 << "2. Г‚Г»Г©ГІГЁ ГЁГ§ Г ГЄГЄГ ГіГ­ГІГ "		<< endl
 		 << "3. "						<< endl
-		 << "0. Выйти из программы"		<< endl
-		 << "Выберите один из пунктов меню: ";
+		 << "0. Г‚Г»Г©ГІГЁ ГЁГ§ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»"		<< endl
+		 << "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г®Г¤ГЁГ­ ГЁГ§ ГЇГіГ­ГЄГІГ®Гў Г¬ГҐГ­Гѕ: ";
 	char choice;
 	cin >> choice;
 	int res = choice - '\0';
@@ -28,10 +28,10 @@ int main_menu::Main()
 		system("pause");
 		exit(0);
 	default:
-		cout << "\nНеверный выбор, попробуйте ещё раз!" << endl;
+		cout << "\nГЌГҐГўГҐГ°Г­Г»Г© ГўГ»ГЎГ®Г°, ГЇГ®ГЇГ°Г®ГЎГіГ©ГІГҐ ГҐГ№Вё Г°Г Г§!" << endl;
 		point_of_entry::ClearScreen();
 		main_menu::Main();
-	}
+	}//
 	system("pause");
 	exit(0);
 
@@ -39,12 +39,12 @@ int main_menu::Main()
 
 void main_menu::profile()
 {
-	cout << "Главное меню" << endl
-		<< "1. Показать данные" << endl
-		<< "2. Изменить данные" << endl
-		<< "3. Назад" << endl
-		<< "0. Выход" << endl
-		<< "Выберите один из пунктов меню: ";
+	cout << "ГѓГ«Г ГўГ­Г®ГҐ Г¬ГҐГ­Гѕ" << endl
+		<< "1. ГЏГ®ГЄГ Г§Г ГІГј Г¤Г Г­Г­Г»ГҐ" << endl
+		<< "2. Г€Г§Г¬ГҐГ­ГЁГІГј Г¤Г Г­Г­Г»ГҐ" << endl
+		<< "3. ГЌГ Г§Г Г¤" << endl
+		<< "0. Г‚Г»ГµГ®Г¤" << endl
+		<< "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г®Г¤ГЁГ­ ГЁГ§ ГЇГіГ­ГЄГІГ®Гў Г¬ГҐГ­Гѕ: ";
 	char choice;
 	cin >> choice;
 	int res = choice - '\0';
@@ -63,7 +63,7 @@ void main_menu::profile()
 		system("pause");
 		exit(0);
 	default:
-		cout << "\nНеверный выбор, попробуйте ещё раз!" << endl;
+		cout << "\nГЌГҐГўГҐГ°Г­Г»Г© ГўГ»ГЎГ®Г°, ГЇГ®ГЇГ°Г®ГЎГіГ©ГІГҐ ГҐГ№Вё Г°Г Г§!" << endl;
 		point_of_entry::ClearScreen();
 		main_menu::profile();
 	}
