@@ -2,7 +2,7 @@
 #include "point_of_entry.h"
 #include "Users.h"
 using namespace std;
-// Ãëàâíîå ìåíþ
+// // Сравнение данных c клавиатуры и данных из текстового файла:
 int main_menu::Main()
 {
 	cout << "Главное меню"			    << endl

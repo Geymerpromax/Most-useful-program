@@ -16,8 +16,8 @@ int point_of_entry::compare_data_for_login(string file_name, string input_data)
 		exit(0);
 	}
 	string buf;
-	
-	while(!file.eof())
+
+	while (!file.eof())
 	{
 		file >> buf;
 		if (input_data == buf)
@@ -89,7 +89,7 @@ int point_of_entry::entry_check()
 		file << 0;
 		file.close();
 	}
-	
+
 	switch (point_of_entry::compare_data_for_login("0", "check_login.txt"))
 	{
 	case(0):
@@ -214,7 +214,7 @@ void point_of_entry::reg_menu()
 	int name_limit = 15;
 	cout << "¬ведите ваш логин, не более " << name_limit << " символов, используйте только латинские буквы ицифры: "; string name; cin >> name; cout << endl;
 
-	if ((name.length() > name_limit) or (input_validation(name, int(name.length())) == false ))
+	if ((name.length() > name_limit) or (input_validation(name, int(name.length())) == false))
 	{
 		ClearScreen();
 		if (OK_or_EXIT_or_BACK() == 1)
@@ -409,4 +409,3 @@ void point_of_entry::clear_reg_list()
 	reg_list.clear(true);
 	reg_list.close();
 }
-
