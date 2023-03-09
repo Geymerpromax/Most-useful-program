@@ -4,14 +4,14 @@
 
 using namespace std;
 
-// Сравнение данных c клавиатуры и данных из текстового файла:
+// РЎСЂР°РІРЅРµРЅРёРµ РґР°РЅРЅС‹С… c РєР»Р°РІРёР°С‚СѓСЂС‹ Рё РґР°РЅРЅС‹С… РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°:
 int point_of_entry::compare_data_for_login(string file_name, string input_data)
 {
 	fstream file;
 	file.open(file_name, fstream::in | fstream::out | fstream::app);
 	if (!(file.is_open()))
 	{
-		cout << "Ошибка открытия файла\nПрограмма будет закрыта!";
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°\nРџСЂРѕРіСЂР°РјРјР° Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚Р°!";
 		system("pause");
 		exit(0);
 	}
@@ -37,7 +37,7 @@ int point_of_entry::compare_data_for_login(string file_name, string input_data_1
 	file.open(file_name, fstream::in | fstream::out | fstream::app);
 	if (!(file.is_open()))
 	{
-		cout << "Ошибка открытия файла\nПрограмма будет закрыта!";
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°\nРџСЂРѕРіСЂР°РјРјР° Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚Р°!";
 		system("pause");
 		exit(0);
 	}
@@ -55,7 +55,7 @@ int point_of_entry::compare_data_for_login(string file_name, string input_data_1
 	return 1;
 }
 
-// Определение размера файла:
+// РћРїСЂРµРґРµР»РµРЅРёРµ СЂР°Р·РјРµСЂР° С„Р°Р№Р»Р°:
 streamoff point_of_entry::determine_file_size(string file_name)
 {
 	fstream file;
@@ -63,7 +63,7 @@ streamoff point_of_entry::determine_file_size(string file_name)
 	if (!(file.is_open()))
 	{
 		point_of_entry::ClearScreen();
-		cout << "Ошибка открытия файла\nПрограмма будет закрыта!";
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°\nРџСЂРѕРіСЂР°РјРјР° Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚Р°!";
 		system("pause");
 		exit(0);
 	}
@@ -72,7 +72,7 @@ streamoff point_of_entry::determine_file_size(string file_name)
 	return size;
 }
 
-// Проверка на вход в аккаунт:
+// РџСЂРѕРІРµСЂРєР° РЅР° РІС…РѕРґ РІ Р°РєРєР°СѓРЅС‚:
 int point_of_entry::entry_check()
 {
 	if (point_of_entry::determine_file_size("check_login.txt") == 0)
@@ -82,7 +82,7 @@ int point_of_entry::entry_check()
 		if (!(file.is_open()))
 		{
 			point_of_entry::ClearScreen();
-			cout << "Ошибка открытия файла\nПрограмма будет закрыта!";
+			cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°\nРџСЂРѕРіСЂР°РјРјР° Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚Р°!";
 			system("pause");
 			exit(0);
 		}
@@ -95,16 +95,16 @@ int point_of_entry::entry_check()
 	case(0):
 		point_of_entry::login_or_reg_menu();
 	case(1):
-		cout << "Добро пожаловать!" << endl;
+		cout << "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ!" << endl;
 		main_menu::Main();
 	default:
-		cout << "Ошибка\nПрограмма будет закрыта!";
+		cout << "РћС€РёР±РєР°\nРџСЂРѕРіСЂР°РјРјР° Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚Р°!";
 		system("pause");
 		exit(0);
 	}
 }
 
-// Проверка введённых символов на соответсвие с допустимой базой:
+// РџСЂРѕРІРµСЂРєР° РІРІРµРґС‘РЅРЅС‹С… СЃРёРјРІРѕР»РѕРІ РЅР° СЃРѕРѕС‚РІРµС‚СЃРІРёРµ СЃ РґРѕРїСѓСЃС‚РёРјРѕР№ Р±Р°Р·РѕР№:
 bool point_of_entry::input_validation(string received_data, int length_data)
 {
 	string base = { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" };
@@ -138,7 +138,7 @@ bool point_of_entry::input_validation(string received_data, int length_data)
 	return true;
 }
 
-// Шифр
+// РЁРёС„СЂ
 string point_of_entry::encrypt(string received_data, int length_data)
 {
 	string base = { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdef" };
@@ -172,7 +172,7 @@ string point_of_entry::encrypt(string received_data, int length_data)
 	return value_data;
 }
 
-// Де шифр
+// Р”Рµ С€РёС„СЂ
 string point_of_entry::de_encrypt(string received_data, int length_data)
 {
 	string base = { "9abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" };
@@ -206,13 +206,13 @@ string point_of_entry::de_encrypt(string received_data, int length_data)
 	return value_data;
 }
 
-// Меню регистрации:
+// РњРµРЅСЋ СЂРµРіРёСЃС‚СЂР°С†РёРё:
 void point_of_entry::reg_menu()
 {
 	ClearScreen();
-	cout << "Меню регистрации:" << endl;
+	cout << "РњРµРЅСЋ СЂРµРіРёСЃС‚СЂР°С†РёРё:" << endl;
 	int name_limit = 15;
-	cout << "Введите ваш логин, не более " << name_limit << " символов, используйте только латинские буквы ицифры: "; string name; cin >> name; cout << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РІР°С€ Р»РѕРіРёРЅ, РЅРµ Р±РѕР»РµРµ " << name_limit << " СЃРёРјРІРѕР»РѕРІ, РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹ РёС†РёС„СЂС‹: "; string name; cin >> name; cout << endl;
 
 	if ((name.length() > name_limit) or (input_validation(name, int(name.length())) == false))
 	{
@@ -228,7 +228,7 @@ void point_of_entry::reg_menu()
 		}
 	}
 	int password_limit = 15;
-	cout << "Введите пароль, не более " << password_limit << " символов, используйте только латинские буквы ицифры: "; string password; cin >> password; cout << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ, РЅРµ Р±РѕР»РµРµ " << password_limit << " СЃРёРјРІРѕР»РѕРІ, РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹ РёС†РёС„СЂС‹: "; string password; cin >> password; cout << endl;
 	if ((password.length() > password_limit) or input_validation(password, int(password.length())) == false)
 	{
 		ClearScreen();
@@ -253,13 +253,13 @@ void point_of_entry::reg_menu()
 	check_login.close();
 }
 
-// Меню входа:
+// РњРµРЅСЋ РІС…РѕРґР°:
 void point_of_entry::login_menu()
 {
 	ClearScreen();
-	cout << "Меню Входа:" << endl;
+	cout << "РњРµРЅСЋ Р’С…РѕРґР°:" << endl;
 	int name_limit = 10;
-	cout << "Введите ваш логин: "; string name; cin >> name; cout << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РІР°С€ Р»РѕРіРёРЅ: "; string name; cin >> name; cout << endl;
 	if ((name.length() > name_limit) or (input_validation(name, int(name.length())) == false))
 	{
 		ClearScreen();
@@ -274,7 +274,7 @@ void point_of_entry::login_menu()
 		}
 	}
 	int password_limit = 10;
-	cout << "Введите пароль: "; string password; cin >> password; cout << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: "; string password; cin >> password; cout << endl;
 	if ((password.length() > password_limit) or input_validation(password, int(password.length())) == false)
 	{
 		if (OK_or_EXIT_or_BACK() == 1)
@@ -296,7 +296,7 @@ void point_of_entry::login_menu()
 		check_login.open("check_login.txt", fstream::in | fstream::out);
 		check_login << 1;
 		check_login.close();
-		cout << "Добро пожаловать!" << endl;
+		cout << "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ!" << endl;
 		main_menu::Main();
 	case(1):
 		if (OK_or_EXIT_or_BACK() == 1)
@@ -308,12 +308,12 @@ void point_of_entry::login_menu()
 	}
 }
 
-// Выбор меню входа или регистрации
+// Р’С‹Р±РѕСЂ РјРµРЅСЋ РІС…РѕРґР° РёР»Рё СЂРµРіРёСЃС‚СЂР°С†РёРё
 int point_of_entry::login_or_reg_menu()
 {
 
-	cout << "1. Войти" << endl << "2. Зарегестрироваться" << endl << "3. Выход" << endl;
-	cout << "Выберите один из пунктов меню: ";
+	cout << "1. Р’РѕР№С‚Рё" << endl << "2. Р—Р°СЂРµРіРµСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ" << endl << "3. Р’С‹С…РѕРґ" << endl;
+	cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ: ";
 	char choice;
 	cin >> choice;
 	int res = choice - '\0';
@@ -329,14 +329,14 @@ int point_of_entry::login_or_reg_menu()
 		exit(0);
 	default:
 		ClearScreen();
-		cout << "Неверный выбор, попробуйте ещё раз!" << endl;
+		cout << "РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·!" << endl;
 		login_or_reg_menu();
 
 	}
 	return 0;
 }
 
-// Очистка экрана
+// РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР°
 void point_of_entry::ClearScreen()
 {
 	HANDLE                     hStdOut;
@@ -374,13 +374,13 @@ void point_of_entry::ClearScreen()
 	SetConsoleCursorPosition(hStdOut, homeCoords);
 }
 
-// Обработка ошибок
+// РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
 int point_of_entry::OK_or_EXIT_or_BACK()
 {
 	fstream reg_list;
-	cout << "Ошибка!" << endl;
-	cout << "1. Попробовать ещё раз" << endl << "2. Назад" << endl << "3. Выйти из программы" << endl;
-	cout << "Выберите один из пунктов меню: ";
+	cout << "РћС€РёР±РєР°!" << endl;
+	cout << "1. РџРѕРїСЂРѕР±РѕРІР°С‚СЊ РµС‰С‘ СЂР°Р·" << endl << "2. РќР°Р·Р°Рґ" << endl << "3. Р’С‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹" << endl;
+	cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ: ";
 	char choice;
 	cin >> choice;
 	int res = choice - '\0';
@@ -395,13 +395,13 @@ int point_of_entry::OK_or_EXIT_or_BACK()
 		exit(0);
 	default:
 		ClearScreen();
-		cout << "Неверный выбор, попробуйте ещё раз!" << endl;
+		cout << "РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·!" << endl;
 		OK_or_EXIT_or_BACK();
 		return 0;
 	}
 }
 
-// Мусор
+// РњСѓСЃРѕСЂ
 void point_of_entry::clear_reg_list()
 {
 	fstream reg_list;
