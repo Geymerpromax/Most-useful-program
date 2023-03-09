@@ -7,6 +7,7 @@
 #include <fstream>
 #include <windows.h>
 using namespace std;
+
 class point_of_entry
 {
 public:
