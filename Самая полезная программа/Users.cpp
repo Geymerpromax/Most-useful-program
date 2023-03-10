@@ -5,7 +5,7 @@
 void Users::set_pers_info()
 {
 	Users client;
-	cout << "Ââåäèòå ôàìèëèş, èìÿ, îò÷åñòâî: ";
+	cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ„Ğ°Ğ¼Ğ¸Ğ»Ğ¸Ñ, Ğ¸Ğ¼Ñ, Ğ¾Ñ‚Ñ‡ĞµÑÑ‚Ğ²Ğ¾: ";
 	cin >> client.surname;
 	/*
 	if ((password.length() > password_limit) or input_validation_eu(password, int(password.length())) == false)
@@ -26,14 +26,14 @@ void Users::set_pers_info()
 	cin >> client.name; point_of_entry::input_validation_ru(client.name, client.name.length());
 	cin >> client.patronymic; point_of_entry::input_validation_ru(client.patronymic, client.patronymic.length());
 
-	cout << "Ââåäèòå äàòó ğîæäåíèÿ (äåíü, ìåñÿö, ãîä) ÷åğåç ïğîáåë: ";
+	cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ´Ğ°Ñ‚Ñƒ Ñ€Ğ¾Ğ¶Ğ´ĞµĞ½Ğ¸Ñ (Ğ´ĞµĞ½ÑŒ, Ğ¼ĞµÑÑÑ†, Ğ³Ğ¾Ğ´) Ñ‡ĞµÑ€ĞµĞ· Ğ¿Ñ€Ğ¾Ğ±ĞµĞ»: ";
 	cin >> client.day >> client.month >> client.year;
 	fstream file;
 	file.open("users_data.txt", fstream::in | fstream::out | fstream::app);
 	if (!(file.is_open()))
 	{
 		point_of_entry::ClearScreen();
-		cout << "Îøèáêà îòêğûòèÿ ôàéëà\nÏğîãğàììà áóäåò çàêğûòà!";
+		cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ¾Ñ‚ĞºÑ€Ñ‹Ñ‚Ğ¸Ñ Ñ„Ğ°Ğ¹Ğ»Ğ°\nĞŸÑ€Ğ¾Ğ³Ñ€Ğ°Ğ¼Ğ¼Ğ° Ğ±ÑƒĞ´ĞµÑ‚ Ğ·Ğ°ĞºÑ€Ñ‹Ñ‚Ğ°!";
 		system("pause");
 		exit(0);
 	}
