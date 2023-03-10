@@ -135,7 +135,6 @@
   <ItemGroup>
     <ClInclude Include="main_menu.h" />
     <ClInclude Include="point_of_entry.h" />
-    <ClInclude Include="user.h" />
     <ClInclude Include="Users.h" />
   </ItemGroup>
   <ItemGroup>

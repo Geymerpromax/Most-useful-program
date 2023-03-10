@@ -13,5 +13,5 @@ class main_menu
 public:
 	static int Main();
 	static void profile();
+	static void out_of_profile();
 };
-

@@ -56,7 +56,7 @@ int point_of_entry::compare_data_for_login(string file_name, string input_data_1
 }
 
 // Определение размера файла:
-streamoff point_of_entry::determine_file_size(string file_name)
+int point_of_entry::determine_file_size(string file_name)
 {
 	fstream file;
 	file.open(file_name, fstream::in | fstream::out | fstream::app);
@@ -67,7 +67,8 @@ streamoff point_of_entry::determine_file_size(string file_name)
 		system("pause");
 		exit(0);
 	}
-	streamoff size = file.tellg();
+	file.seekg(0, std::ios::end);
+	int size = file.tellg();///
 	file.close();
 	return size;
 }
@@ -90,7 +91,7 @@ int point_of_entry::entry_check()
 		file.close();
 	}
 
-	switch (point_of_entry::compare_data_for_login("0", "check_login.txt"))
+	switch (point_of_entry::compare_data_for_login("check_login.txt", "0"))
 	{
 	case(0):
 		point_of_entry::login_or_reg_menu();
@@ -104,8 +105,8 @@ int point_of_entry::entry_check()
 	}
 }
 
-// Проверка введённых символов на соответсвие с допустимой базой:
-bool point_of_entry::input_validation(string received_data, int length_data)
+// Проверка введённых символов на соответсвие с алфавитом:
+bool point_of_entry::input_validation_eu(string received_data, int length_data)
 {
 	string base = { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" };
 	string* sent_data = new string[length_data];
@@ -122,6 +123,38 @@ bool point_of_entry::input_validation(string received_data, int length_data)
 			}
 
 			if (j == 61)
+			{
+				delete[] sent_data;
+				return false;
+			}
+
+		}
+		if (counter == length_data)
+		{
+			break;
+		}
+	}
+
+	delete[] sent_data;
+	return true;
+}
+bool point_of_entry::input_validation_ru(string received_data, int length_data)
+{
+	string base = { "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" };
+	string* sent_data = new string[length_data];
+	int counter = 0;
+	for (int i = 0; i < length_data; i++)
+	{
+		for (int j = 0; j < 66; j++)
+		{
+
+			if (received_data[i] == base[j])
+			{
+				counter++;
+				break;
+			}
+
+			if (j == 65)
 			{
 				delete[] sent_data;
 				return false;
@@ -214,7 +247,7 @@ void point_of_entry::reg_menu()
 	int name_limit = 15;
 	cout << "Введите ваш логин, не более " << name_limit << " символов, используйте только латинские буквы ицифры: "; string name; cin >> name; cout << endl;
 
-	if ((name.length() > name_limit) or (input_validation(name, int(name.length())) == false))
+	if ((name.length() > name_limit) or (input_validation_eu(name, int(name.length())) == false))
 	{
 		ClearScreen();
 		if (OK_or_EXIT_or_BACK() == 1)
@@ -229,7 +262,7 @@ void point_of_entry::reg_menu()
 	}
 	int password_limit = 15;
 	cout << "Введите пароль, не более " << password_limit << " символов, используйте только латинские буквы ицифры: "; string password; cin >> password; cout << endl;
-	if ((password.length() > password_limit) or input_validation(password, int(password.length())) == false)
+	if ((password.length() > password_limit) or input_validation_eu(password, int(password.length())) == false)
 	{
 		ClearScreen();
 
@@ -260,7 +293,7 @@ void point_of_entry::login_menu()
 	cout << "Меню Входа:" << endl;
 	int name_limit = 10;
 	cout << "Введите ваш логин: "; string name; cin >> name; cout << endl;
-	if ((name.length() > name_limit) or (input_validation(name, int(name.length())) == false))
+	if ((name.length() > name_limit) or (input_validation_eu(name, int(name.length())) == false))
 	{
 		ClearScreen();
 		if (OK_or_EXIT_or_BACK() == 1)
@@ -275,7 +308,7 @@ void point_of_entry::login_menu()
 	}
 	int password_limit = 10;
 	cout << "Введите пароль: "; string password; cin >> password; cout << endl;
-	if ((password.length() > password_limit) or input_validation(password, int(password.length())) == false)
+	if ((password.length() > password_limit) or input_validation_eu(password, int(password.length())) == false)
 	{
 		if (OK_or_EXIT_or_BACK() == 1)
 		{
@@ -294,6 +327,13 @@ void point_of_entry::login_menu()
 	{
 	case(0):
 		check_login.open("check_login.txt", fstream::in | fstream::out);
+		if (!(check_login.is_open()))
+		{
+			point_of_entry::ClearScreen();
+			cout << "Ошибка открытия файла\nПрограмма будет закрыта!";
+			system("pause");
+			exit(0);
+		}
 		check_login << 1;
 		check_login.close();
 		cout << "Добро пожаловать!" << endl;
@@ -409,3 +449,4 @@ void point_of_entry::clear_reg_list()
 	reg_list.clear(true);
 	reg_list.close();
 }
+
