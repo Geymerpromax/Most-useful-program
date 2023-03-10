@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="main_menu.cpp" />
     <ClCompile Include="point_of_entry.cpp" />
+    <ClCompile Include="ru.cpp" />
     <ClCompile Include="Users.cpp" />
     <ClCompile Include="Самая полезная программа.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main_menu.h" />
     <ClInclude Include="point_of_entry.h" />
+    <ClInclude Include="ru.h" />
     <ClInclude Include="Users.h" />
   </ItemGroup>
   <ItemGroup>
